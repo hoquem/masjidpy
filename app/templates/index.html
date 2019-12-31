@@ -1,0 +1,20 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Masjid Member List</title>
+        {% else %}
+        <title>Welcome to Masjid Member List</title>
+        {% endif %}
+    </head>
+    <body>
+        <h1>Hello, {{ user.username }}!</h1>
+        {% for member in members %}
+        <div>
+            <p>{{ member.name }}
+            {{ member.address.street }}
+            {{ member.address.postcode }}
+            {{ member.mobile}}</p>
+        </div>
+        {% endfor %}
+    </body>
+</html>
