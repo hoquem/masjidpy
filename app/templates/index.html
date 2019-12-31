@@ -1,12 +1,6 @@
-<html>
-    <head>
-        {% if title %}
-        <title>{{ title }} - Masjid Member List</title>
-        {% else %}
-        <title>Welcome to Masjid Member List</title>
-        {% endif %}
-    </head>
-    <body>
+{% extends "base.html" %}
+
+{% block content %}
         <h1>Hello, {{ user.username }}!</h1>
         {% for member in members %}
         <div>
@@ -16,5 +10,4 @@
             {{ member.mobile}}</p>
         </div>
         {% endfor %}
-    </body>
-</html>
+{% endblock %}
