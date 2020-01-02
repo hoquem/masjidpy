@@ -1,4 +1,4 @@
-FLASK_APP=masjid.py
+FLASK_APP=masjidpy.py
 FLASK_DEBUG=1
 MAIL_SERVER=localhost
 MAIL_PORT=8025 
