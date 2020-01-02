@@ -1,0 +1,104 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-01-02 22:24+0000\n"
+"PO-Revision-Date: 2020-01-02 20:57+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: app/__init__.py:25
+msgid "Please login to access this page."
+msgstr ""
+
+#: app/email.py:19
+msgid "[Masjid Member List] Reset Your Password"
+msgstr "[Masjid Member List] Nueva Contraseña"
+
+#: app/forms.py:9 app/forms.py:15
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: app/forms.py:10 app/forms.py:17 app/forms.py:36
+msgid "Password"
+msgstr "Contraseña"
+
+#: app/forms.py:11
+msgid "Remember Me"
+msgstr ""
+
+#: app/forms.py:12 app/routes.py:66
+msgid "Sign In"
+msgstr ""
+
+#: app/forms.py:16 app/forms.py:32
+msgid "Email"
+msgstr ""
+
+#: app/forms.py:18 app/forms.py:37
+msgid "Repeat Password"
+msgstr ""
+
+#: app/forms.py:19 app/routes.py:80
+msgid "Register"
+msgstr ""
+
+#: app/forms.py:24
+msgid "Please use a different username."
+msgstr ""
+
+#: app/forms.py:29
+msgid "Please use a different email address."
+msgstr ""
+
+#: app/forms.py:33 app/forms.py:38
+msgid "Request Password Reset"
+msgstr ""
+
+#: app/routes.py:44
+msgid "Home"
+msgstr ""
+
+#: app/routes.py:59
+msgid "Invalid username or password"
+msgstr ""
+
+#: app/routes.py:78
+msgid "Congratulations, you are now a registered user!"
+msgstr ""
+
+#: app/routes.py:91
+msgid "Check your email for the instructions to reset your password"
+msgstr ""
+
+#: app/routes.py:93
+msgid "Reset Password"
+msgstr ""
+
+#: app/routes.py:106
+msgid "Your password has been reset."
+msgstr ""
+
+#: app/templates/404.html:4
+msgid "File Not Found"
+msgstr ""
+
+#: app/templates/500.html:4
+msgid "An unexpected error has occurred"
+msgstr ""
+
+#: app/templates/500.html:5
+msgid "The administrator has been notified. Sorry for the inconvenience!"
+msgstr ""
+

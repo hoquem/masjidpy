@@ -1,7 +1,7 @@
 import os
 import logging
 
-from flask import Flask
+from flask import Flask, request
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -10,18 +10,25 @@ from flask_mail import Mail
 from logging.handlers import RotatingFileHandler
 from logging.handlers import SMTPHandler
 from flask_bootstrap import Bootstrap
+from flask_moment import Moment 
+from flask_cors import CORS, cross_origin
+from flask_babel import Babel, lazy_gettext as _l
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
+cors = CORS(app) 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
+login.login_message = _l('Please login to access this page.')
 mail = Mail(app)
 bootstrap = Bootstrap(app)
+moment = Moment(app)
+babel = Babel(app)
 
-from app import routes, models, errors
-
+from app import routes, models, errors, cli
 
 if not app.debug:
     if app.config['MAIL_SERVER']:
@@ -41,8 +48,7 @@ if not app.debug:
 
     if not os.path.exists('logs'):
         os.mkdir('logs')
-    file_handler = RotatingFileHandler('logs/masjidpy.log', maxBytes=10240,
-                                       backupCount=10)
+    file_handler = RotatingFileHandler('logs/masjidpy.log', maxBytes=10240, backupCount=10)
     file_handler.setFormatter(logging.Formatter(
         '%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]'))
     file_handler.setLevel(logging.INFO)
@@ -51,35 +57,8 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info('Masjid Member List startup')
 
+logging.getLogger('flask_cors').level = logging.DEBUG
 
-#db = SQLAlchemy()
-#login = LoginManager()
-#migrate = Migrate()
-#login.login_view = 'auth.login'
-#login.login_message = _l('Please log in to access this page.')
-#mail = Mail()
-#bootstrap = Bootstrap()
-#moment = Moment()
-#babel = Babel()
-
-#def create_app(config_class=Config):
-#    app = Flask(__name__)
-#    app.config.from_object(config_class)
-#
-#    db.init_app(app)
-#    migrate.init_app(app)
-#    login.init_app(app)
-#    mail.init_app(app)
-#    bootstrap.init_app(app)
-#    moment.init_app(app)
-#    babel.init_app(app)
-
-
-#    if not app.debug and not app.testing:
-
-
-#    return app
-
-#from app.errors import bp as errors_bp
-#app.register_blueprint(errors_bp)
-
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
