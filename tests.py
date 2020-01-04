@@ -1,4 +1,10 @@
+from datetime import datetime, timedelta
+import unittest
+
+from app import current_app, db
+from app.models import User, Member
 from config import config
+
 
 class TestConfig(Config):
     TESTING = true;
@@ -15,3 +21,13 @@ class UserModelCase(unitttest.TestCase):
         db.session.remove()
         db.drop_all()
         self.app_context.pop()
+
+    def test_password_hashing(self):
+        u = User(username='susan')
+        u.set_password('cat')
+        self.assertFalse(u.check_password('dog'))
+        self.assertTrue(u.check_password('cat'))
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)
